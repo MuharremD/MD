@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        class rover {
+            constructor(startX, startY, direction) {
+                this.startX = startX;
+                this.startY = startY;
+                this.direction = direction;
+            }
+        }
+
+        var route = "MMMRMM";
+        var maxX = 5;
+        var maxY = 5;
+
+        var rover1 = new rover(0, 0, "N");
+        for (var i = 0; i < route.length; i++) {
+            if (route[i] == "M") {
+
+                if (rover1.direction == "N") {
+                    rover1.startY++;
+                }
+                else if (rover1.direction == "S") {
+                    rover1.startY--;
+                }
+                else if (rover1.direction == "W") {
+                    rover1.startX--;
+                }
+                else if (rover1.direction == "E") {
+                    rover1.startX++;
+                }
+            }
+
+            else if (route[i] == "L") {
+
+                if (rover1.direction == "N") {
+                    rover1.direction = "W";
+                }
+                else if (rover1.direction=="S") {
+                     rover1.direction = "E";
+                }
+                  else if (rover1.direction=="W") {
+                     rover1.direction = "S";
+                }
+                  else if (rover1.direction=="E") {
+                     rover1.direction = "N";
+                }
+
+
+            }
+            else if (route[i] == "R") {
+                
+                if (rover1.direction == "N") {
+                    rover1.direction = "E";
+                }
+                else if (rover1.direction=="S") {
+                     rover1.direction = "W";
+                }
+                  else if (rover1.direction=="W") {
+                     rover1.direction = "N";
+                }
+                  else if (rover1.direction=="E") {
+                     rover1.direction = "S";
+                }
+            }
+        }
+
+        if (rover1.startX > maxX || rover1.startY > maxY || rover1.startX < 0 || rover1.startY < 0) {
+            alert("Out of Range !!!");
+        } else {
+            alert("Current Position" + rover1.startX + " " + rover1.startY);
+        }
+      
+
+    </script>
+</body>
+</html>
